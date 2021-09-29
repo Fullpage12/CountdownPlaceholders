@@ -1,4 +1,4 @@
-package me.fullpage.serverreleasetime;
+package me.fullpage.countdownplaceholders;
 
 import me.clip.placeholderapi.PlaceholderAPIPlugin;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;

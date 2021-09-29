@@ -1,4 +1,4 @@
-package me.fullpage.serverreleasetime;
+package me.fullpage.countdownplaceholders;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.configuration.InvalidConfigurationException;

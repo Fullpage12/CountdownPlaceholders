@@ -1,6 +1,6 @@
 name: CountdownPlaceholders
 version: ${project.version}
-main: me.fullpage.serverreleasetime.CountdownPlaceholders
+main: me.fullpage.countdownplaceholders.CountdownPlaceholders
 prefix: CountdownPlaceholders
 authors: [ Fullpage ]
 depend:
