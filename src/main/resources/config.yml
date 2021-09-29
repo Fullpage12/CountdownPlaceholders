@@ -1,0 +1,20 @@
+# Follow the following format to make as many countdown placeholders as you want.
+# Choose a timezone from https://garygregory.wordpress.com/2013/06/18/what-are-the-java-timezone-ids/
+# Format: %countdown_KEY%
+# e.g. the 'example' placeholder below can be used with %countdown_example%, the 'christmas' example is %countdown_example%
+example:
+  timezone: "America/New_York"
+  year: 2021
+  month: 11
+  day: 10
+  hour: 3
+  minute: 0
+  second: 0
+christmas:
+  timezone: "America/New_York"
+  year: 2021
+  month: 12
+  day: 25
+  hour: 0
+  minute: 0
+  second: 0
