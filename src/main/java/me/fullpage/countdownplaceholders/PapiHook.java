@@ -7,7 +7,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.time.Month;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
@@ -53,16 +55,26 @@ public class PapiHook extends PlaceholderExpansion {
         for (String key : config.getKeys(false)) {
             if (identifier.equalsIgnoreCase(key)) {
                 final int year = config.getInt(key + ".year", 2025);
-                final int month = config.getInt(key + ".month", 1);
+                final int month = config.getInt(key + ".month", 1) - 1 ;
                 final int day = config.getInt(key + ".day", 1);
                 final int hour = config.getInt(key + ".hour", 15);
                 final int minute = config.getInt(key + ".minute", 0);
                 final int second = config.getInt(key + ".second", 0);
-                final String timezone = config.getString(".timezone", "America/New_York");
+                final String timezone = config.getString(key + ".timezone", "America/New_York");
                 cal.setTimeZone(TimeZone.getTimeZone(timezone));
-                cal.set(year, month, day, hour, minute, second);
 
-                return new TimeFormatter(convertTime(cal.getTimeInMillis() - System.currentTimeMillis(), TimeUnit.MILLISECONDS, TimeUnit.SECONDS)).getFormattedTime();
+               cal.set(year, month, day, hour, minute, second);
+
+                long calMillis = cal.getTimeInMillis();
+                long currentTime = System.currentTimeMillis();
+                String formattedTime;
+                final boolean countUpwardsAfter = config.getBoolean(key + ".countUpwardsAfter", false);
+                if (calMillis > currentTime || !countUpwardsAfter) {
+                    formattedTime = new TimeFormatter(convertTime(calMillis - currentTime, TimeUnit.MILLISECONDS, TimeUnit.SECONDS)).getFormattedTime();
+                } else {
+                    formattedTime = new TimeFormatter(convertTime(currentTime - calMillis, TimeUnit.MILLISECONDS, TimeUnit.SECONDS)).getFormattedTime() + " ago";
+                }
+                return formattedTime;
             }
         }
         return null;
