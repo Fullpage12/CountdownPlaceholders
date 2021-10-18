@@ -5,3 +5,8 @@ prefix: CountdownPlaceholders
 authors: [ Fullpage ]
 depend:
   - PlaceholderAPI
+commands:
+  countdownplaceholders:
+    description: Base command for the plugin
+    usage: /countdownplaceholders <reload/placeholders>
+    permission: countdownplaceholders.admin
